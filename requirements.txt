@@ -1,0 +1,4 @@
+# CamRelay - small Python deps only
+PyYAML>=6.0
+flask>=3.0
+gphoto2>=2.5.0    # optional, we shell out to CLI but useful for fallback

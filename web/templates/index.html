@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CamRelay</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <meta http-equiv="refresh" content="5">
+</head>
+<body>
+  <header>
+    <h1>CamRelay</h1>
+    <div class="camera">{{ status.camera or 'no camera' }}</div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Status</h2>
+      <table>
+        <tr><td>Running</td><td>{{ '✓' if status.running else '✗' }}</td></tr>
+        <tr><td>Cycles</td><td>{{ status.cycle_count }}</td></tr>
+        <tr><td>Last cycle</td>
+            <td>{{ '%d seconds ago' % ((now - status.last_cycle)|int) if status.last_cycle else 'never' }}</td></tr>
+        <tr><td>Errors (streak)</td><td>{{ status.errors_streak }}</td></tr>
+        <tr><td>Total uploaded</td><td>{{ status.uploaded_total }}</td></tr>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Actions</h2>
+      <button onclick="fetch('/api/test-camera',{method:'POST'}).then(r=>r.json()).then(j=>alert('Camera: '+j.camera))">Test camera</button>
+      <button onclick="fetch('/api/test-nas',{method:'POST'}).then(r=>r.json()).then(j=>alert('NAS: '+(j.ok?'OK ':'FAIL ')+j.msg))">Test NAS</button>
+    </section>
+
+    <section class="card">
+      <h2>Recent log</h2>
+      <table class="log">
+        {% for e in recent|reverse %}
+        <tr class="lvl-{{ e.level }}">
+          <td class="ts">{{ e.ts|tsfmt }}</td>
+          <td class="lvl">{{ e.level[:4] }}</td>
+          <td>{{ e.msg }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </section>
+  </main>
+</body>
+</html>

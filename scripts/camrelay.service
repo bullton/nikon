@@ -1,0 +1,31 @@
+[Unit]
+Description=CamRelay - auto upload Nikon Z30 photos to NAS
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=camrelay
+Group=camrelay
+WorkingDirectory=/opt/camrelay
+ExecStart=/usr/bin/python3 -m relay.main --config /etc/camrelay/config.yaml
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=camrelay
+
+# Sandboxing
+ProtectSystem=strict
+ReadWritePaths=/var/lib/camrelay /tmp
+ProtectHome=true
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+camrelay/
+├── README.md
+├── requirements.txt
+├── relay/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── cli.py
+│   ├── config.py
+│   ├── camera.py
+│   ├── nas.py
+│   ├── sync.py
+│   ├── state.py
+│   └── web.py
+├── web/
+│   ├── templates/index.html
+│   └── static/style.css
+├── config/
+│   └── config.example.yaml
+├── scripts/
+│   ├── install.sh
+│   ├── connect-camera.sh
+│   └── camrelay.service
+└── logs/
