@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CamToNAS</string>
+    <string name="title_home">相机自动上传</string>
+    <string name="title_settings">设置</string>
+    <string name="title_logs">日志</string>
+    <string name="action_start">开始同步</string>
+    <string name="action_stop">停止同步</string>
+    <string name="action_clear_logs">清空日志</string>
+    <string name="action_test_connection">测试连接</string>
+    <string name="status_idle">空闲</string>
+    <string name="status_connecting">连接相机中…</string>
+    <string name="status_scanning">扫描新照片…</string>
+    <string name="status_uploading">上传到 NAS 中…</string>
+    <string name="status_error">出错</string>
+    <string name="notif_channel_sync">后台同步</string>
+    <string name="notif_channel_logs">同步通知</string>
+    <string name="notif_title_idle">CamToNAS 已就绪</string>
+    <string name="notif_title_active">CamToNAS 同步中</string>
+</resources>

@@ -1,0 +1,28 @@
+# Build artifacts
+*.iml
+.gradle/
+local.properties
+.idea/
+.DS_Store
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+
+# Android Studio
+.navigation/
+*.hprof
+
+# Keystore
+*.jks
+*.keystore
+release.keystore
+
+# Logs
+*.log
+hs_err_pid*
+
+# OS
+Thumbs.db
